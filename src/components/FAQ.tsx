@@ -38,31 +38,31 @@ const FAQ = () => {
       <div className="container-amopet">
         <div className="max-w-3xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-12 animate-slide-up">
-            <span className="inline-block text-primary font-heading font-semibold text-sm uppercase tracking-wider mb-4">
+          <div className="section-header animate-slide-up">
+            <span className="section-label">
               Perguntas Frequentes
             </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4">
+            <h2 className="section-title">
               Dúvidas? <span className="text-gradient">A gente responde!</span>
             </h2>
-            <p className="text-lg text-muted-foreground">
+            <p className="section-description">
               As perguntas mais comuns dos nossos clientes.
             </p>
           </div>
 
           {/* FAQ Accordion */}
-          <Accordion type="single" collapsible className="space-y-4">
+          <Accordion type="single" collapsible className="space-y-3 md:space-y-4">
             {faqs.map((faq, index) => (
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="bg-card rounded-2xl border-none shadow-card px-6 data-[state=open]:shadow-card-hover transition-shadow animate-slide-up"
+                className="bg-card rounded-xl md:rounded-2xl border-none shadow-card px-4 md:px-6 data-[state=open]:shadow-card-hover transition-shadow animate-slide-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <AccordionTrigger className="text-left font-heading font-bold text-foreground hover:text-primary hover:no-underline py-5 text-base md:text-lg">
+                <AccordionTrigger className="text-left font-heading font-bold text-foreground hover:text-primary hover:no-underline py-4 md:py-5 text-sm md:text-base lg:text-lg gap-4">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pb-5 leading-relaxed">
+                <AccordionContent className="text-muted-foreground pb-4 md:pb-5 leading-relaxed text-sm md:text-base">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
@@ -70,15 +70,15 @@ const FAQ = () => {
           </Accordion>
 
           {/* Contact CTA */}
-          <div className="text-center mt-12 p-8 bg-muted rounded-2xl animate-slide-up" style={{ animationDelay: '0.6s' }}>
-            <p className="text-foreground mb-2">
+          <div className="text-center mt-10 md:mt-12 p-6 md:p-8 bg-muted rounded-xl md:rounded-2xl animate-slide-up" style={{ animationDelay: '0.6s' }}>
+            <p className="text-foreground mb-2 text-sm md:text-base">
               Não encontrou sua resposta?
             </p>
             <a
               href="https://wa.me/5511999999999"
-              className="inline-flex items-center gap-2 text-primary font-heading font-bold hover:underline"
+              className="inline-flex items-center gap-2 text-primary font-heading font-bold hover:underline text-sm md:text-base"
             >
-              <span className="text-xl">💬</span>
+              <span className="text-lg md:text-xl">💬</span>
               Fale com a gente no WhatsApp
             </a>
           </div>

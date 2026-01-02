@@ -38,7 +38,7 @@
     --input: 30 20% 88%;
     --ring: 0 85% 70%;
 
-    --radius: 1rem;
+    --radius: 0.75rem;
 
     /* Custom AmoPet tokens */
     --coral: 0 85% 70%;
@@ -70,6 +70,19 @@
     /* Typography */
     --font-heading: 'Nunito', sans-serif;
     --font-body: 'Inter', sans-serif;
+
+    /* Spacing Scale */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-10: 2.5rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --space-20: 5rem;
+    --space-24: 6rem;
 
     /* Sidebar (keeping defaults) */
     --sidebar-background: 0 0% 98%;
@@ -112,26 +125,62 @@
 
   html {
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
     @apply bg-background text-foreground font-body antialiased;
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading font-bold;
+    @apply font-heading font-bold tracking-tight;
+  }
+
+  h1 {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
+  }
+
+  h3 {
+    @apply text-xl md:text-2xl;
   }
 }
 
 @layer components {
+  /* Container with consistent max-width and padding */
   .container-amopet {
-    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply w-full mx-auto px-4 sm:px-6 lg:px-8;
+    max-width: 1280px;
   }
 
+  /* Section padding - consistent vertical rhythm */
   .section-padding {
-    @apply py-16 md:py-24;
+    @apply py-16 md:py-20 lg:py-24;
   }
 
+  /* Section header - consistent styling */
+  .section-header {
+    @apply text-center mb-12 md:mb-16;
+  }
+
+  .section-label {
+    @apply inline-block text-primary font-heading font-semibold text-sm uppercase tracking-wider mb-3 md:mb-4;
+  }
+
+  .section-title {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-3 md:mb-4;
+  }
+
+  .section-description {
+    @apply text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed;
+  }
+
+  /* Gradient backgrounds */
   .gradient-hero {
     background: var(--gradient-hero);
   }
@@ -144,6 +193,7 @@
     background: var(--gradient-ocean);
   }
 
+  /* Shadows */
   .shadow-card {
     box-shadow: var(--shadow-card);
   }
@@ -152,13 +202,37 @@
     box-shadow: var(--shadow-card-hover);
   }
 
+  /* Text gradient */
   .text-gradient {
     @apply bg-clip-text text-transparent;
     background-image: var(--gradient-coral);
   }
+
+  /* Card base styling */
+  .card-base {
+    @apply bg-card rounded-xl md:rounded-2xl shadow-card transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply hover:shadow-card-hover hover:-translate-y-1;
+  }
+
+  /* Grid layouts */
+  .grid-2-cols {
+    @apply grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6;
+  }
+
+  .grid-3-cols {
+    @apply grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 lg:gap-8;
+  }
+
+  .grid-4-cols {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6;
+  }
 }
 
 @layer utilities {
+  /* Animations */
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
@@ -223,5 +297,30 @@
       opacity: 1;
       transform: scale(1);
     }
+  }
+
+  /* Hide scrollbar but allow scroll */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Line clamp utilities */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }

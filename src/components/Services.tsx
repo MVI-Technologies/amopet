@@ -36,56 +36,56 @@ const Services = () => {
     <section id="servicos" className="section-padding bg-cream-dark">
       <div className="container-amopet">
         {/* Section Header */}
-        <div className="text-center mb-16 animate-slide-up">
-          <span className="inline-block text-primary font-heading font-semibold text-sm uppercase tracking-wider mb-4">
+        <div className="section-header animate-slide-up">
+          <span className="section-label">
             Nossos Serviços
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4">
+          <h2 className="section-title">
             Cuidado profissional com{' '}
             <span className="text-gradient">muito amor</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="section-description">
             Equipe especializada pronta para cuidar do seu pet como se fosse da família.
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid-3-cols">
           {services.map((service, index) => (
             <article
               key={service.title}
-              className="group relative bg-card rounded-3xl p-8 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-2 overflow-hidden animate-slide-up"
+              className="group relative bg-card rounded-xl md:rounded-2xl lg:rounded-3xl p-5 md:p-6 lg:p-8 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 overflow-hidden animate-slide-up flex flex-col"
               style={{ animationDelay: `${index * 0.15}s` }}
             >
               {/* Background Decoration */}
-              <div className={`absolute top-0 right-0 w-32 h-32 ${service.color} rounded-full -translate-y-1/2 translate-x-1/2 opacity-50 group-hover:scale-150 transition-transform duration-500`} />
+              <div className={`absolute top-0 right-0 w-24 md:w-32 h-24 md:h-32 ${service.color} rounded-full -translate-y-1/2 translate-x-1/2 opacity-50 group-hover:scale-150 transition-transform duration-500`} />
 
               {/* Emoji */}
-              <span className="absolute top-6 right-6 text-4xl group-hover:animate-wiggle">
+              <span className="absolute top-4 md:top-6 right-4 md:right-6 text-3xl md:text-4xl group-hover:animate-wiggle">
                 {service.emoji}
               </span>
 
               {/* Icon */}
-              <div className="relative w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                <service.icon className="w-8 h-8 text-primary" />
+              <div className="relative w-12 h-12 md:w-14 lg:w-16 md:h-14 lg:h-16 rounded-xl md:rounded-2xl bg-primary/10 flex items-center justify-center mb-4 md:mb-6 group-hover:bg-primary/20 transition-colors">
+                <service.icon className="w-6 h-6 md:w-7 lg:w-8 md:h-7 lg:h-8 text-primary" />
               </div>
 
               {/* Content */}
-              <h3 className="relative text-2xl font-heading font-bold text-foreground mb-3">
+              <h3 className="relative text-xl md:text-2xl font-heading font-bold text-foreground mb-2 md:mb-3">
                 {service.title}
               </h3>
-              <p className="relative text-muted-foreground mb-4 leading-relaxed">
+              <p className="relative text-muted-foreground text-sm md:text-base mb-3 md:mb-4 leading-relaxed flex-grow">
                 {service.description}
               </p>
 
               {/* Price */}
-              <p className="relative text-lg font-heading font-bold text-primary mb-6">
+              <p className="relative text-base md:text-lg font-heading font-bold text-primary mb-4 md:mb-6">
                 {service.price}
               </p>
 
               {/* CTA */}
               <Button variant="outline" className="relative w-full group/btn">
-                {service.cta}
+                <span>{service.cta}</span>
                 <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
               </Button>
             </article>

@@ -53,24 +53,24 @@ const Products = () => {
     <section id="produtos" className="section-padding bg-background">
       <div className="container-amopet">
         {/* Section Header */}
-        <div className="text-center mb-16 animate-slide-up">
-          <span className="inline-block text-primary font-heading font-semibold text-sm uppercase tracking-wider mb-4">
+        <div className="section-header animate-slide-up">
+          <span className="section-label">
             Produtos em Destaque
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4">
+          <h2 className="section-title">
             O melhor para seu <span className="text-gradient">pet</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="section-description">
             Selecionamos os melhores produtos com preços especiais para você.
           </p>
         </div>
 
         {/* Products Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid-4-cols">
           {products.map((product, index) => (
             <article
               key={product.id}
-              className="group bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-2 animate-slide-up"
+              className="group bg-card rounded-xl md:rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 animate-slide-up flex flex-col"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Image Container */}
@@ -78,17 +78,17 @@ const Products = () => {
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                 />
                 
                 {/* Badges */}
-                <div className="absolute top-3 left-3 right-3 flex justify-between items-start">
-                  <span className="bg-card/90 backdrop-blur-sm text-sm px-3 py-1 rounded-full font-medium">
+                <div className="absolute top-2 md:top-3 left-2 md:left-3 right-2 md:right-3 flex justify-between items-start gap-2">
+                  <span className="bg-card/90 backdrop-blur-sm text-xs md:text-sm px-2 md:px-3 py-1 rounded-full font-medium truncate">
                     {product.badge}
                   </span>
                   {product.discount && (
-                    <span className="bg-primary text-primary-foreground text-sm px-3 py-1 rounded-full font-bold">
+                    <span className="bg-primary text-primary-foreground text-xs md:text-sm px-2 md:px-3 py-1 rounded-full font-bold flex-shrink-0">
                       {product.discount}
                     </span>
                   )}
@@ -96,30 +96,30 @@ const Products = () => {
               </div>
 
               {/* Content */}
-              <div className="p-5">
-                <h3 className="font-heading font-bold text-lg text-foreground mb-2 group-hover:text-primary transition-colors">
+              <div className="p-4 md:p-5 flex flex-col flex-grow">
+                <h3 className="font-heading font-bold text-base md:text-lg text-foreground mb-1.5 md:mb-2 group-hover:text-primary transition-colors line-clamp-2">
                   {product.name}
                 </h3>
-                <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+                <p className="text-sm text-muted-foreground mb-3 md:mb-4 line-clamp-2 flex-grow">
                   {product.description}
                 </p>
 
                 {/* Price */}
-                <div className="flex items-baseline gap-2 mb-4">
-                  <span className="text-2xl font-heading font-bold text-foreground">
+                <div className="flex items-baseline gap-2 mb-3 md:mb-4">
+                  <span className="text-xl md:text-2xl font-heading font-bold text-foreground">
                     R$ {product.price.toFixed(2).replace('.', ',')}
                   </span>
                   {product.originalPrice && (
-                    <span className="text-sm text-muted-foreground line-through">
+                    <span className="text-xs md:text-sm text-muted-foreground line-through">
                       R$ {product.originalPrice.toFixed(2).replace('.', ',')}
                     </span>
                   )}
                 </div>
 
                 {/* CTA */}
-                <Button variant="default" className="w-full">
+                <Button variant="default" className="w-full" size="default">
                   <ShoppingCart className="w-4 h-4" />
-                  Comprar Agora
+                  <span>Comprar Agora</span>
                 </Button>
               </div>
             </article>
@@ -127,10 +127,10 @@ const Products = () => {
         </div>
 
         {/* View All Button */}
-        <div className="text-center mt-12">
+        <div className="text-center mt-10 md:mt-12">
           <Button variant="outline" size="lg">
             <Tag className="w-5 h-5" />
-            Ver Todos os Produtos
+            <span>Ver Todos os Produtos</span>
           </Button>
         </div>
       </div>

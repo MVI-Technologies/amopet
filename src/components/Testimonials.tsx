@@ -67,69 +67,89 @@ const Testimonials = () => {
     <section id="depoimentos" className="section-padding bg-background overflow-hidden">
       <div className="container-amopet">
         {/* Section Header */}
-        <div className="text-center mb-16 animate-slide-up">
-          <span className="inline-block text-primary font-heading font-semibold text-sm uppercase tracking-wider mb-4">
+        <div className="section-header animate-slide-up">
+          <span className="section-label">
             Depoimentos
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4">
+          <h2 className="section-title">
             O que nossos <span className="text-gradient">clientes falam</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="section-description">
             Mais de 5.000 pets felizes e famílias satisfeitas!
           </p>
         </div>
 
         {/* Carousel */}
-        <div className="relative">
-          {/* Navigation Buttons */}
+        <div className="relative px-2 md:px-0">
+          {/* Navigation Buttons - Desktop only */}
           <button
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 rounded-full bg-card shadow-card hover:shadow-card-hover flex items-center justify-center text-foreground hover:text-primary transition-all hover:scale-110"
+            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 lg:-translate-x-4 z-10 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-card shadow-card hover:shadow-card-hover items-center justify-center text-foreground hover:text-primary transition-all hover:scale-110"
             aria-label="Depoimento anterior"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-5 h-5 lg:w-6 lg:h-6" />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 rounded-full bg-card shadow-card hover:shadow-card-hover flex items-center justify-center text-foreground hover:text-primary transition-all hover:scale-110"
+            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 lg:translate-x-4 z-10 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-card shadow-card hover:shadow-card-hover items-center justify-center text-foreground hover:text-primary transition-all hover:scale-110"
             aria-label="Próximo depoimento"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-5 h-5 lg:w-6 lg:h-6" />
           </button>
 
-          {/* Testimonials Grid */}
-          <div className="grid md:grid-cols-3 gap-6 px-8">
+          {/* Testimonials Grid - Responsive */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 md:px-6 lg:px-8">
+            {/* Mobile: Show only current */}
+            <article className="md:hidden relative bg-card rounded-xl p-5 shadow-card animate-fade-in">
+              <Quote className="absolute top-4 right-4 w-6 h-6 text-primary/20" />
+              <div className="flex gap-1 mb-3">
+                {Array.from({ length: testimonials[currentIndex].rating }).map((_, i) => (
+                  <Star key={i} className="w-4 h-4 text-gold fill-gold" />
+                ))}
+              </div>
+              <p className="text-foreground mb-4 leading-relaxed italic text-sm">
+                "{testimonials[currentIndex].text}"
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-xl">
+                  {testimonials[currentIndex].avatar}
+                </div>
+                <div>
+                  <p className="font-heading font-bold text-foreground text-sm">
+                    {testimonials[currentIndex].name}
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    {testimonials[currentIndex].pet}
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            {/* Desktop: Show 3 */}
             {getVisibleTestimonials().map((testimonial, index) => (
               <article
                 key={`${testimonial.id}-${currentIndex}`}
-                className="relative bg-card rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300 animate-fade-in"
+                className="hidden md:block relative bg-card rounded-xl lg:rounded-2xl p-5 lg:p-6 shadow-card hover:shadow-card-hover transition-all duration-300 animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                {/* Quote Icon */}
-                <Quote className="absolute top-4 right-4 w-8 h-8 text-primary/20" />
-
-                {/* Rating */}
-                <div className="flex gap-1 mb-4">
+                <Quote className="absolute top-4 right-4 w-6 h-6 lg:w-8 lg:h-8 text-primary/20" />
+                <div className="flex gap-1 mb-3 lg:mb-4">
                   {Array.from({ length: testimonial.rating }).map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-gold fill-gold" />
+                    <Star key={i} className="w-4 h-4 lg:w-5 lg:h-5 text-gold fill-gold" />
                   ))}
                 </div>
-
-                {/* Text */}
-                <p className="text-foreground mb-6 leading-relaxed italic">
+                <p className="text-foreground mb-4 lg:mb-6 leading-relaxed italic text-sm lg:text-base">
                   "{testimonial.text}"
                 </p>
-
-                {/* Author */}
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center text-2xl">
+                  <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-muted flex items-center justify-center text-xl lg:text-2xl">
                     {testimonial.avatar}
                   </div>
                   <div>
-                    <p className="font-heading font-bold text-foreground">
+                    <p className="font-heading font-bold text-foreground text-sm lg:text-base">
                       {testimonial.name}
                     </p>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-xs lg:text-sm text-muted-foreground">
                       {testimonial.pet}
                     </p>
                   </div>
@@ -139,15 +159,15 @@ const Testimonials = () => {
           </div>
 
           {/* Dots Navigation */}
-          <div className="flex justify-center gap-2 mt-8">
+          <div className="flex justify-center gap-2 mt-6 md:mt-8">
             {testimonials.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all ${
+                className={`h-2.5 rounded-full transition-all ${
                   index === currentIndex
-                    ? 'bg-primary w-8'
-                    : 'bg-muted hover:bg-primary/50'
+                    ? 'bg-primary w-6 md:w-8'
+                    : 'bg-muted hover:bg-primary/50 w-2.5'
                 }`}
                 aria-label={`Ir para depoimento ${index + 1}`}
               />
