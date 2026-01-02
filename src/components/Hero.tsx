@@ -10,7 +10,6 @@ const Hero = () => {
         <div className="absolute top-32 left-4 md:left-10 w-16 md:w-20 h-16 md:h-20 rounded-full bg-primary/10 animate-float" />
         <div className="absolute top-48 right-8 md:right-20 w-24 md:w-32 h-24 md:h-32 rounded-full bg-secondary/10 animate-float" style={{ animationDelay: '1s' }} />
         <div className="absolute bottom-32 left-1/4 w-12 md:w-16 h-12 md:h-16 rounded-full bg-gold/20 animate-float" style={{ animationDelay: '2s' }} />
-        <div className="absolute bottom-16 right-1/4 text-4xl md:text-6xl animate-bounce-gentle opacity-60">🐾</div>
       </div>
 
       <div className="container-amopet relative z-10">
@@ -28,7 +27,7 @@ const Hero = () => {
             {/* Headline */}
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold text-foreground leading-[1.15] mb-6">
               AmoPet — onde seu pet é{' '}
-              <span className="text-gradient whitespace-nowrap">tratado como família</span>
+              <span className="text-gradient ">tratado como família</span>
               <span className="inline-block animate-wiggle ml-2 text-3xl sm:text-4xl md:text-5xl">🐾</span>
             </h1>
 
@@ -38,7 +37,7 @@ const Hero = () => {
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-4 mr-5 justify-center lg:justify-start ">
               <Button variant="hero" size="xl" className="w-full sm:w-auto min-h-[56px]">
                 <Sparkles className="w-5 h-5 flex-shrink-0" />
                 <span>Ganhe 15% na 1ª compra</span>
@@ -67,7 +66,7 @@ const Hero = () => {
           </div>
 
           {/* Hero Image */}
-          <div className="relative order-1 lg:order-2 animate-scale-in" style={{ animationDelay: '0.3s' }}>
+          <div className="ml-6 relative order-1 lg:order-2 animate-scale-in" style={{ animationDelay: '0.3s' }}>
             <div className="relative max-w-lg mx-auto lg:max-w-none">
               {/* Main Image */}
               <div className="relative rounded-2xl lg:rounded-3xl overflow-hidden shadow-lg-coral aspect-[4/3] lg:aspect-auto">
@@ -82,7 +81,7 @@ const Hero = () => {
               </div>
 
               {/* Floating Card - Hidden on very small screens */}
-              <div className="hidden sm:flex absolute -bottom-4 -left-4 lg:-bottom-6 lg:-left-6 bg-card p-3 lg:p-4 rounded-xl lg:rounded-2xl shadow-card-hover animate-float">
+              <div className="hidden sm:flex absolute -bottom-6 -left-4 lg:-bottom-6 lg:-left-6 bg-card p-3 lg:p-4 rounded-xl lg:rounded-2xl shadow-card-hover animate-float">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-success-light flex items-center justify-center">
                     <span className="text-lg lg:text-2xl">✓</span>

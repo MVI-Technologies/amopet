@@ -170,14 +170,6 @@ const Footer = () => {
               © {currentYear} AmoPet. Todos os direitos reservados. CNPJ: 00.000.000/0001-00
             </p>
 
-            {/* Payment Methods */}
-            <div className="flex items-center gap-3 md:gap-4 text-xl md:text-2xl order-1 md:order-2">
-              <span title="PIX">💳</span>
-              <span title="Visa">💳</span>
-              <span title="Mastercard">💳</span>
-              <span title="Boleto">📄</span>
-            </div>
-
             {/* Security Badges */}
             <div className="flex items-center gap-3 text-xs text-primary-foreground/60 order-3">
               <span className="flex items-center gap-1">
